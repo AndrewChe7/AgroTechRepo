@@ -141,3 +141,7 @@ MEDIA_ROOT = os.environ['STATIC_ROOT']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+# Telegram bot settings
+
+BOT_TOKEN = os.environ["BOT_TOKEN"]
