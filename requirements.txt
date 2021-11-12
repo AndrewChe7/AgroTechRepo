@@ -1,8 +1,5 @@
-APScheduler==3.6.3
-wheel
 Django
 gunicorn
 psycopg2
 whitenoise
 django-heroku
-python-telegram-bot
