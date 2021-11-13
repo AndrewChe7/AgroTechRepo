@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block main_block %}
+    <div class="row">
+    {% for category in categories %}
+        <div class="col s12 m4 l3">
+            <div class="card small">
+                <div class="card-image">
+                    <img src="{{ category.image.url }}" alt="">
+                </div>
+                <div class="card-title">
+                    <a href="/marketplace/category/{{ category.id }}">
+                        {{ category.name }}
+                    </a>
+                </div>
+                <div class="card-content">
+                    {{ category.description }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block main_block %}
+    {% if user.user_info.user_type == 0 or user.user_info.user_type == 1 %}
+        {% for goods_elem in goods %}
+            <div class="col s12 m4 l3">
+                <div class="card small">
+                    <div class="card-image">
+                        <img src="{{ goods_elem.images.0.url }}" alt="">
+                    </div>
+                    <div class="card-title">
+                        <a href="/marketplace/goods/{{ goods_elem.id }}">
+                            {{ goods_elem.name }}
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        {{ goods_elem.description }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% elif user.user_info.user_type == 2 %}
+        <div class="row">
+        {% for goods_elem in goods %}
+            <div class="col s12 m4 l3">
+                <div class="card small">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{{ goods_elem.images.all.0.image.url }}" alt="">
+                    </div>
+                    <div class="card-title">
+                        <a href="/marketplace/goods/{{ goods_elem.id }}">
+                            {{ goods_elem.name }}
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        {{ goods_elem.description }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -10,7 +10,7 @@ class UserTypes(models.IntegerChoices):
 
 
 class UserInfo (models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_info')
     user_type = models.IntegerField(default=UserTypes.RETAIL_PURCHASER, choices=UserTypes.choices)
 
     def __str__(self):

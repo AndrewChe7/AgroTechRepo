@@ -19,6 +19,13 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">account_circle</i></a>
       <ul class="right hide-on-med-and-down">
           {% if user.is_authenticated %}
+                {% if user.user_info.user_type == 0 %}
+                    <li><a href="/marketplace/my_goods/">Мои заказы</a></li>
+                {% elif user.user_info.user_type == 1 %}
+                    <li><a href="/marketplace/my_goods/">Мои заказы</a></li>
+                {% elif user.user_info.user_type == 2 %}
+                    <li><a href="/marketplace/my_goods/">Мои товары</a></li>
+                {% endif %}
               <li><a href="/auth/logout/">Выйти</a></li>
           {% else %}
               <li><a href="/auth/login/">Войти / Зарегистрироваться</a></li>
@@ -29,6 +36,13 @@
 
   <ul class="sidenav" id="mobile-demo">
       {% if user.is_authenticated %}
+          {% if user.user_info.user_type == 0 %}
+            <li><a href="/marketplace/my_goods/">Мои заказы</a></li>
+        {% elif user.user_info.user_type == 1 %}
+            <li><a href="/marketplace/my_goods/">Мои заказы</a></li>
+        {% elif user.user_info.user_type == 2 %}
+            <li><a href="/marketplace/my_goods/">Мои товары</a></li>
+        {% endif %}
           <li><a href="/auth/logout/">Выйти</a></li>
       {% else %}
           <li><a href="/auth/login/">Войти</a></li>
