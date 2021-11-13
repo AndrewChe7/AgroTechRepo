@@ -12,7 +12,7 @@
     </head>
 
     <body>
-    <div class="container">
+
     <nav>
     <div class="nav-wrapper teal darken-4">
       <a href="/" class="brand-logo">AgroHack Demo</a>
@@ -35,17 +35,58 @@
           <li><a href="/auth/register/">Зарегистрироваться</a></li>
       {% endif %}
   </ul>
+    <div class="container">
         {% block main_block %}
         {% endblock %}
     </div>
+        <footer class="page-footer teal darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l4 s12">
+                <div class="row">
+                    <div class="col s12">
+                        <img class="responsive-img" src="{% static "images/logo1.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <img class="responsive-img" src="{% static "images/logo2.png" %}" alt="">
+                    </div>
+                </div>
+              </div>
+              <div class="col l4 s12">
+                <h5 class="white-text">Контакты</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#">+7 (934) 592 05 71</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">shkenan@gmail.com</a></li>
+                  <li><a class="grey-text text-lighten-3" href=""><i class="material-icons">video_library</i></a></li>
+                </ul>
+              </div>
+              <div class="col l4 s12">
+                <h5 class="white-text">Документы</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#">Условия использования</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Политика конфиденциальности</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Политика обработки данных данных</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2021 Что-то там
+            </div>
+          </div>
+        </footer>
+
     <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="{% static "js/jquery-3.6.0.min.js" %}"></script>
   <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
-
   <script type="text/javascript">
       $(document).ready(function(){
         $('.sidenav').sidenav();
         $('select').formSelect();
+        $('.parallax').parallax();
       });
   </script>
     </body>
