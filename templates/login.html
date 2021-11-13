@@ -1,5 +1,35 @@
 {% extends 'main.html' %}
 
 {% block main_block %}
+    {% if is_error %}
+        <div class="alert alert-danger" role="alert">
+            Неправильное имя пользователя или пароль!
+        </div>
+    {% endif %}
+    <div class="row align-items-center h-100">
+    <div class="col col-md-3 mx-auto" style="padding-top: 20px;">
+        <form method="post" class="card">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Логин</span>
+                    <input name="username" type="text" class="form-control" placeholder="Логин" aria-label="Логин" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">Пароль</span>
+                    <input name="password" type="password" class="form-control" id="password" aria-describedby="basic-addon2">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </div>
+                    <div class="col">
+                        <a href="/auth/register/" class="btn btn-primary">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
 
+        </form>
+    </div>
+    </div>
 {% endblock %}

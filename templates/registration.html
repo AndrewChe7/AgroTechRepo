@@ -1,5 +1,50 @@
 {% extends 'main.html' %}
 
 {% block main_block %}
-    Test reg page.
+<div class="row align-items-center h-100">
+    <div class="col col-md-3 mx-auto" style="padding-top: 20px;">
+        <form method="post" class="card">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Логин</span>
+                    <input name="username" type="text" class="form-control {% if not first_load %} {% if bad_username %} is-invalid {% else %} is-valid {% endif %} {% endif %}" placeholder="Логин" aria-label="Логин" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">Пароль</span>
+                    <input name="password" type="password" class="form-control" id="password" aria-describedby="basic-addon2">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Email</span>
+                    <input name="email" type="text" class="form-control {% if not first_load %} {% if bad_email %} is-invalid {% else %} is-valid {% endif %} {% endif %}" placeholder="Email" aria-label="Email" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon35">Вы</span>
+                    <select name="user_type" class="form-select valid {% if not first_load %} {% if bad_type %} is-invalid {% else %} is-valid {% endif %} {% endif %}" aria-label="Выбор типа пользователя">
+                        <option value="0">Розничный закупщик</option>
+                        <option value="1">Оптовый закупщик</option>
+                        <option value="2">Поставщик</option>
+                        <option value="3">Перевозчик</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon4">Имя</span>
+                    <input name="first_name" type="text" class="form-control" placeholder="Имя" aria-label="Имя" aria-describedby="basic-addon4">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon5">Фамилия</span>
+                    <input name="last_name" type="text" class="form-control" placeholder="Фамилия" aria-label="Фамилия" aria-describedby="basic-addon5">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 {% endblock %}
