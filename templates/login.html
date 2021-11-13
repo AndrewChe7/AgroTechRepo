@@ -1,34 +1,36 @@
 {% extends 'main.html' %}
 
 {% block main_block %}
-    {% if is_error %}
-        <div class="alert alert-danger" role="alert">
-            Неправильное имя пользователя или пароль!
-        </div>
-    {% endif %}
-    <div class="row align-items-center h-100">
-    <div class="col col-md-3 mx-auto" style="padding-top: 20px;">
-        <form method="post" class="card">
+    <div class="row" style="padding-top: 20px;">
+    <div class="col m6 offset-m3 s12">
+        {% if is_error %}
+            <div class="card red darken-2" role="alert">
+            <div class="card-content white-text">
+                Неправильное имя пользователя или пароль!
+            </div>
+            </div>
+        {% endif %}
+
+        <form method="post">
             {% csrf_token %}
-            <div class="card-body">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Логин</span>
-                    <input name="username" type="text" class="form-control" placeholder="Логин" aria-label="Логин" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">Пароль</span>
-                    <input name="password" type="password" class="form-control" id="password" aria-describedby="basic-addon2">
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Войти</button>
-                    </div>
-                    <div class="col">
-                        <a href="/auth/register/" class="btn btn-primary">Зарегистрироваться</a>
-                    </div>
+            <div class="row">
+                <div class="col s12 l8">
+                    <input name="username" id="username" type="text" class="validate">
+                    <label for="username">Логин</label>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col s12 l8">
+                    <input name="password" id="password" type="password" class="validate">
+                    <label for="password">Пароль</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 l8">
+                    <button type="submit" class="btn waves-effect waves-light">Войти</button>
+                    <a href="/auth/register/" class="btn waves-effect waves-light">Зарегистрироваться</a>
+                </div>
+            </div>
         </form>
     </div>
     </div>
