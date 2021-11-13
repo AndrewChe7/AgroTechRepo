@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'UserSystem',
     'Marketplace',
     'StaticPages',
+    'telegram_bot',
 ]
 
 MIDDLEWARE = [
