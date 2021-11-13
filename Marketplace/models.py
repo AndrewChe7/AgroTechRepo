@@ -12,6 +12,7 @@ class Goods(models.Model):
     price_s = models.DecimalField(max_digits=51, decimal_places=2)
     price_m = models.DecimalField(max_digits=51, decimal_places=2)
     price_l = models.DecimalField(max_digits=51, decimal_places=2)
+    price_r = models.DecimalField(max_digits=51, decimal_places=2)
 
     def __str__(self) -> str:
         return f"{self.name} {self.provider}"

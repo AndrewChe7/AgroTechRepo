@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'UserSystem',
-    'Marketplace'
+    'Marketplace',
 ]
 
 MIDDLEWARE = [
