@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from StaticPages.views import home_page
+from django.conf.urls.static import static
+from AgroHackMarketplace import settings
 
 urlpatterns = [
     path('auth/', include('UserSystem.urls')),
     path('admin/', admin.site.urls),
     path('', home_page),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
