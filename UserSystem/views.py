@@ -14,17 +14,21 @@ def registration(request):
         bad_username = False
         bad_email = False
         bad_type = False
+        error = 'Данные введены некорректно'
         username = request.POST['username']
         if User.objects.filter(username=username).exists():
             bad_username = True
+            error = 'Такой логин занят'
         password = request.POST['password']
         email = request.POST['email']
         if User.objects.filter(email=email).exists():
             bad_email = True
+            error = 'Проверьте email'
         try:
             validate_email(email)
         except ValidationError:
             bad_email = True
+            error = 'Проверьте email'
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         user_type = 0
@@ -32,17 +36,15 @@ def registration(request):
             user_type = int(request.POST['user_type'])
         except ValueError:
             bad_type = True
+            error = 'Выберите тип пользователя'
         if bad_email or bad_type or bad_username:
-            return render(request, 'registration.html', context={'bad_email': bad_email,
-                                                                 'bad_username': bad_username,
-                                                                 'bad_type': bad_type,
-                                                                 'first_load': False})
+            return render(request, 'registration.html', context={'is_error': True, 'error': error})
         new_user = User.objects.create_user(username, email, password, first_name=first_name, last_name=last_name)
         new_user_info = UserInfo.objects.create(user=new_user, user_type=user_type)
         new_user.save()
         new_user_info.save()
         return redirect('/auth/login/')
-    return render(request, 'registration.html', context={'first_load': True})
+    return render(request, 'registration.html')
 
 
 def login_view(request):
