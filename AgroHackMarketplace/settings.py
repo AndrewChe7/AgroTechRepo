@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'UserSystem'
+    'UserSystem',
+    'Marketplace'
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,8 @@ USE_TZ = True
 STATIC_ROOT = os.environ['STATIC_ROOT']
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
