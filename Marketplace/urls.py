@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Marketplace.views import marketplace, category, my_goods
+from Marketplace.views import marketplace, category, my_goods, something_good
 
 urlpatterns = [
     path('', marketplace),
     path('my_goods/', my_goods),
     path('category/<int:category_id>', category),
+    path('goods/<int:goods_id>', something_good),
 ]
