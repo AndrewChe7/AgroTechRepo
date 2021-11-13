@@ -15,15 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from StaticPages.views import home_page
-from django.conf.urls.static import static
-from AgroHackMarketplace import settings
+from Marketplace.views import marketplace, category, my_goods
 
 urlpatterns = [
-    path('auth/', include('UserSystem.urls')),
-    path('marketplace/', include('Marketplace.urls')),
-    path('admin/', admin.site.urls),
-    path('', home_page),
+    path('', marketplace),
+    path('my_goods/', my_goods),
+    path('category/<int:category_id>', category),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
