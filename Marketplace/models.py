@@ -34,8 +34,8 @@ class goods_order(models.Model):
     goods_id = models.ForeignKey(Goods, on_delete=models.CASCADE, related_name='+')
 
 
-def goods_images_name() -> str:
-    return f'goods_images/{str(uuid4())}'
+def goods_images_name(instance, filename:str) -> str:
+    return f'goods_images/{str(uuid4())}.{filename.split(".")[-1]}'
 
 
 class goods_images(models.Model):
