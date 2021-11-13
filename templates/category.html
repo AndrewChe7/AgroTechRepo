@@ -11,7 +11,7 @@
                     <img class="responsive-img" src="{{ goods_elem.images.all.0.image.url }}" alt="">
                 </div>
                 <div class="card-title">
-                    <a href="/marketplace/goods/{{ goods_elem.id }}">
+                    <a href="/marketplace/goods/{{ goods_elem.id }}{% if request.GET.requests %}?requests={{ request.GET.requests }}{% endif %}">
                         {{ goods_elem.name }}
                     </a>
                 </div>
