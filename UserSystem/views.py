@@ -4,6 +4,7 @@ from UserSystem.models import UserInfo, UserTypes
 from django.contrib.auth import authenticate, login, logout
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from telegram_bot import models as bot_models
 
 
 # Create your views here.
@@ -41,8 +42,10 @@ def registration(request):
             return render(request, 'registration.html', context={'is_error': True, 'error': error})
         new_user = User.objects.create_user(username, email, password, first_name=first_name, last_name=last_name)
         new_user_info = UserInfo.objects.create(user=new_user, user_type=user_type)
+        new_telegram_info = bot_models.TelegramInfo.objects.create(user=new_user)
         new_user.save()
         new_user_info.save()
+        new_telegram_info.save()
         return redirect('/auth/login/')
     return render(request, 'registration.html')
 

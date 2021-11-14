@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'UserSystem',
     'Marketplace',
     'StaticPages',
+    'telegram_bot',
 ]
 
 MIDDLEWARE = [
@@ -133,10 +134,14 @@ STATIC_ROOT = os.environ['STATIC_ROOT']
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.environ['STATIC_ROOT']
+MEDIA_ROOT = os.environ['MEDIA_ROOT']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+# Telegram bot settings
+
+BOT_TOKEN = os.environ["BOT_TOKEN"]

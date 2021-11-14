@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from uuid import uuid4
 
+from django.db.models.fields import related
+
 
 def goods_images_name(instance, filename:str) -> str:
     return f'goods_images/{str(uuid4())}.{filename.split(".")[-1]}'
@@ -31,10 +33,10 @@ class GoodsRequestImages(models.Model):
 
 class Goods(models.Model):
     name = models.CharField(max_length=64)
-    provider = models.ForeignKey(User, on_delete=models.CASCADE, related_name="providers")
+    provider = models.ForeignKey(User, on_delete=models.CASCADE, related_name="goods")
     images = models.ManyToManyField(GoodsImages)
     description = models.CharField(max_length=1024)
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, related_name="goods")
     price_s = models.DecimalField(max_digits=51, decimal_places=2)
     price_m = models.DecimalField(max_digits=51, decimal_places=2)
     price_l = models.DecimalField(max_digits=51, decimal_places=2)
@@ -49,7 +51,7 @@ class Goods(models.Model):
 
 class GoodsRequest(models.Model):
     name = models.CharField(max_length=64)
-    requester = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requesters")
+    requester = models.ForeignKey(User, on_delete=models.CASCADE, related_name="goods_requests")
     images = models.ManyToManyField(GoodsRequestImages)
     description = models.CharField(max_length=1024)
     categories = models.ManyToManyField(Category)
